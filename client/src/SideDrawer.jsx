@@ -7,7 +7,6 @@ import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -16,12 +15,18 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import HomeIcon from '@mui/icons-material/Home';
+import LocalLibraryOutlinedIcon from '@mui/icons-material/LocalLibraryOutlined';
+import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import './SideDrawer.css';
 
 const drawerWidth = 240;
+
+const icons = {
+  0: <HomeOutlinedIcon />,
+  1: <LocalLibraryOutlinedIcon />,
+  2: <NotificationsNoneOutlinedIcon />
+}
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -131,8 +136,8 @@ export default function SideDrawer() {
             {theme.direction === 'rtl' ? <ChevronRightIcon color='white'/> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
-        <List style={{backgroundColor: '#2e3856', display:'none'}}>
-          {['Home', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+       <List>
+          {['Home', 'Your Library', 'Notifications'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block', color: 'white' }}>
               <ListItemButton
                 sx={{
@@ -149,33 +154,7 @@ export default function SideDrawer() {
                     color: 'white'
                   }}
                 >
-                <HomeIcon />
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider /> 
-       <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {icons[index]}
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
