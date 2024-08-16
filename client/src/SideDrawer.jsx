@@ -9,8 +9,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -108,33 +106,31 @@ export default function SideDrawer() {
   return (
     <Box sx={{ 
         display: 'flex',
-        backgroundColor: '#2e3856'
+        backgroundColor: '#0a092d'
         }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} style={{backgroundColor: '#2e3856', boxShadow: 'none'}}>
+      <AppBar position="fixed" style={{backgroundColor: '#0a092d', boxShadow: 'none'}}>
         <Toolbar>
           <IconButton
             aria-label="open drawer"
-            onClick={handleDrawerOpen}
+            onClick={open == true ? handleDrawerClose : handleDrawerOpen}
             edge="start"
             sx={{
               marginRight: 5,
-              ...(open && { display: 'none' }),
+              '&:hover': {
+                backgroundColor: '#2e3856'
+              }
             }}
           >
-            <MenuIcon
-            style={{color: 'white'}} />
+            <MenuIcon sx={{color: 'white'}} />
           </IconButton>
           <Typography variant="h3" noWrap component="div">
            Quizlet
           </Typography>
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open} style={{backgroundColor: '#2e3856'}}>
-        <DrawerHeader style={{backgroundColor: '#2e3856'}}>
-          <IconButton onClick={handleDrawerClose} style={{color: 'white'}}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon color='white'/> : <ChevronLeftIcon />}
-          </IconButton>
+      <Drawer variant="permanent" open={open} style={{backgroundColor: '#0a092d', marginTop: '100px'}}>
+        <DrawerHeader style={{backgroundColor: '#0a092d'}}>
         </DrawerHeader>
        <List>
           {['Home', 'Your Library', 'Notifications'].map((text, index) => (
@@ -148,23 +144,41 @@ export default function SideDrawer() {
               >
                 <ListItemIcon
                   sx={{
-                    minWidth: 0,
+                    minWidth: '40px',
+                    width: '100%',
                     mr: open ? 3 : 'auto',
                     justifyContent: 'center',
-                    color: 'white'
+                    padding: '7.5px',
+                    borderRadius: '10px',
+                    color: 'white',
+                    '&:hover': {
+                      color: '#7583ff',
+                      backgroundColor: '#2e3856',
+                      '& .list-item-text': {
+                        color: '#7583ff',
+                        backgroundColor: '#2e3856',
+                      },
+                    }
                   }}
                 >
                   {icons[index]}
+                <ListItemText 
+                className="list-item-text"
+                primary={text}
+                 sx={{ 
+                  display: open ? 'auto' : 'none',
+                  marginLeft: '10px',
+                  '&:hover': {
+                    color: '#7583ff',
+                    backgroundColor: '#2e3856'
+                  }
+                  }} />
                 </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
           ))}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
-      </Box>
     </Box>
   );
 }

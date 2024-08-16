@@ -1,4 +1,5 @@
 import SideDrawer from './SideDrawer';
+import TopBar from './TopBar';
 import './App.css';
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
 
   return (
     <>
+    <div className="top-bar-container"> 
+      <TopBar />
+    </div>
     <div className="side-drawer-container">
       <SideDrawer />
     </div>
