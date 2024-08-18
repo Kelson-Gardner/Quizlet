@@ -20,13 +20,29 @@ import './SideDrawer.css';
 import TopBar from './TopBar';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const drawerWidth = 240;
 
 const icons = {
   0: <HomeOutlinedIcon />,
   1: <LocalLibraryOutlinedIcon />,
-  2: <NotificationsNoneOutlinedIcon />
+  2: <NotificationsNoneOutlinedIcon />,
+  3: <LogoutIcon onClick={logout}/>
+}
+
+
+async function logout() {
+  const res = await fetch("/registration/logout/", {
+    credentials: "same-origin", // include cookies!
+  });
+
+  if (res.ok) {
+    // navigate away from the single page app!
+    window.location = "/registration/sign_in/";
+  } else {
+    // handle logout failed!
+  }
 }
 
 const openedMixin = (theme) => ({
@@ -135,10 +151,10 @@ export default function SideDrawer() {
       variant="contained"
       width='10px'
       sx={{
-        width: '36px',      // Set width
-        height: '36px',     // Set height equal to width for a square
-        minWidth: '36px',   // Prevent the button from shrinking
-        borderRadius: '7.5px', // Optional, customize the border-radius if you want rounded corners
+        width: '36px',
+        height: '36px',
+        minWidth: '36px',
+        borderRadius: '7.5px',
         marginLeft: '10rem',
         backgroundColor: 'rgb(66, 85, 255)',
         '&:hover': {
@@ -152,7 +168,7 @@ export default function SideDrawer() {
         <DrawerHeader style={{backgroundColor: '#0a092d'}}>
         </DrawerHeader>
        <List>
-          {['Home', 'Your Library', 'Notifications'].map((text, index) => (
+          {['Home', 'Your Library', 'Notifications', 'Log out'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block', color: 'white' }}>
               <ListItemButton
                 sx={{
@@ -167,6 +183,7 @@ export default function SideDrawer() {
                     width: '100%',
                     mr: open ? 3 : 'auto',
                     justifyContent: 'center',
+                    alignItems: 'center',
                     padding: '7.5px',
                     borderRadius: '10px',
                     color: 'white',

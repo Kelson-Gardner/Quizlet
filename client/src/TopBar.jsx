@@ -23,7 +23,7 @@ export default function TopBar() {
         <SearchIcon />
       </IconButton>
       <InputBase
-        sx={{ ml: 1, flex: 1, color: 'rgb(255,255,255)', fontSize: '15px', fontFamily: 'Outfit', }}
+        sx={{ ml: 1, flex: 1, color: 'rgb(255,255,255)', fontSize: '15px', fontFamily: 'Outfit' }}
         className='search-bar'
         placeholder="Search for flashcards"
         inputProps={{ 'aria-label': 'Search for flashcards' }}
