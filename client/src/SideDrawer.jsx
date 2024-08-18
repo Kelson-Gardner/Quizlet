@@ -125,7 +125,7 @@ export default function SideDrawer() {
           >
             <MenuIcon sx={{color: 'white'}} />
           </IconButton>
-          <Typography variant="h3" noWrap component="div">
+          <Typography variant="h3" noWrap component="div" sx={{fontWeight: 'bold'}}>
            Quizlet
           </Typography>
           <TopBar />

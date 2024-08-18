@@ -19,7 +19,7 @@ export default function TopBar() {
         borderRadius: '7.5px',
         height: '35px' }}
     >
-      <IconButton type="button" sx={{ p: '7.5px', color: 'rgb(230,230,230, .7)' }} aria-label="search">
+      <IconButton type="button" sx={{ p: '5px', color: 'rgb(230,230,230, .7)' }} aria-label="search">
         <SearchIcon />
       </IconButton>
       <InputBase
