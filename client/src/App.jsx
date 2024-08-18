@@ -19,9 +19,9 @@ function App() {
 
   return (
     <>
-    <div className="top-bar-container"> 
+    {/* <div className="top-bar-container"> 
       <TopBar />
-    </div>
+    </div> */}
     <div className="side-drawer-container">
       <SideDrawer />
     </div>

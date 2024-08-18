@@ -17,6 +17,7 @@ import LocalLibraryOutlinedIcon from '@mui/icons-material/LocalLibraryOutlined';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import './SideDrawer.css';
+import TopBar from './TopBar';
 
 const drawerWidth = 240;
 
@@ -127,6 +128,7 @@ export default function SideDrawer() {
           <Typography variant="h3" noWrap component="div">
            Quizlet
           </Typography>
+          <TopBar />
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open} style={{backgroundColor: '#0a092d', marginTop: '100px'}}>
