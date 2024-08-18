@@ -21,6 +21,7 @@ import TopBar from './TopBar';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -108,10 +109,9 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
       '& .MuiDrawer-paper': closedMixin(theme),
     }),
   }),
-);
+);  
 
-export default function SideDrawer() {
-  const theme = useTheme();
+export default function SideDrawer(props) {
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -121,6 +121,86 @@ export default function SideDrawer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const unHighlightedButton = (index, text) => {
+    return (<ListItemButton
+        sx={{
+          minHeight: 48,
+          justifyContent: open ? 'initial' : 'center',
+          px: 2.5,
+        }}
+        >
+        <ListItemIcon
+          sx={{
+            minWidth: '40px',
+            width: '100%',
+            mr: open ? 3 : 'auto',
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: '7.5px',
+            borderRadius: '10px',
+            color: 'white',
+            '&:hover': {
+              color: '#7583ff',
+              backgroundColor: '#2e3856',
+              '& .list-item-text': {
+                color: '#7583ff',
+                backgroundColor: '#2e3856',
+              },
+            }
+          }}
+        >
+          {icons[index]}
+        <ListItemText 
+        className="list-item-text"
+        primary={text}
+        sx={{ 
+          display: open ? 'auto' : 'none',
+          marginLeft: '10px',
+          '&:hover': {
+            color: '#7583ff',
+            backgroundColor: '#2e3856'
+          }
+          }} />
+        </ListItemIcon>
+        </ListItemButton>
+    )}
+    
+    const highlightedButton = (index, text) => {
+      return (<ListItemButton
+        sx={{
+          minHeight: 48,
+          justifyContent: open ? 'initial' : 'center',
+          px: 2.5,
+        }}
+        >
+        <ListItemIcon
+          sx={{
+            minWidth: '40px',
+            width: '100%',
+            mr: open ? 3 : 'auto',
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: '7.5px',
+            borderRadius: '10px',
+            color: '#7583ff',
+            backgroundColor: '#2e3856 !important'
+          }}
+        >
+          {icons[index]}
+        <ListItemText 
+        className="list-item-text"
+        primary={text}
+        sx={{ 
+          display: open ? 'auto' : 'none',
+          marginLeft: '10px',
+          color: '#7583ff',
+          backgroundColor: '#2e3856 !important'
+          }} />
+        </ListItemIcon>
+        </ListItemButton>
+      )
+    }
 
   return (
     <Box sx={{ 
@@ -143,8 +223,16 @@ export default function SideDrawer() {
           >
             <MenuIcon sx={{color: 'white'}} />
           </IconButton>
-          <Typography variant="h3" noWrap component="div" sx={{fontWeight: 'bold'}}>
-           Quizlet
+          <Typography 
+          variant="h3" 
+          noWrap 
+          component="div" 
+          sx={{fontWeight: 'bold'}}
+          >
+            <Link to={"/home"} 
+            href="#"
+            style={{textDecoration: 'none', color: 'white'}}
+            >Quizlet</Link>
           </Typography>
           <TopBar />
           <Button
@@ -170,47 +258,7 @@ export default function SideDrawer() {
        <List>
           {['Home', 'Your Library', 'Notifications', 'Log out'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block', color: 'white' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: '40px',
-                    width: '100%',
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    padding: '7.5px',
-                    borderRadius: '10px',
-                    color: 'white',
-                    '&:hover': {
-                      color: '#7583ff',
-                      backgroundColor: '#2e3856',
-                      '& .list-item-text': {
-                        color: '#7583ff',
-                        backgroundColor: '#2e3856',
-                      },
-                    }
-                  }}
-                >
-                  {icons[index]}
-                <ListItemText 
-                className="list-item-text"
-                primary={text}
-                 sx={{ 
-                  display: open ? 'auto' : 'none',
-                  marginLeft: '10px',
-                  '&:hover': {
-                    color: '#7583ff',
-                    backgroundColor: '#2e3856'
-                  }
-                  }} />
-                </ListItemIcon>
-              </ListItemButton>
+              {text.toLowerCase() == props.page ? highlightedButton(index, text) : unHighlightedButton(index, text)}
             </ListItem>
           ))}
         </List>

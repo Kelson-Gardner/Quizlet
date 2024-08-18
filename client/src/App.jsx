@@ -1,12 +1,12 @@
 import SideDrawer from './SideDrawer';
 import './App.css';
 
-function App() {
+function App(props) {
 
   return (
     <>
     <div className="side-drawer-container">
-      <SideDrawer />
+      <SideDrawer page={props.page}/>
     </div>
     </>
   )
