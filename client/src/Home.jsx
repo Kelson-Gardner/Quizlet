@@ -1,11 +1,11 @@
 import './Home.css';
 
-function Home(){
+function Home(props){
 
     return(
         <>
-        <div className='test'>
-            I am the home page!!!
+        <div className = {props.isOpen ? "is-open" : "not-open"} >
+            Your Decks
         </div>
         </>
     )

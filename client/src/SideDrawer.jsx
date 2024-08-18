@@ -122,10 +122,12 @@ export default function SideDrawer(props) {
 
   const handleDrawerOpen = () => {
     setOpen(true);
+    props.toggleSidebar();
   };
 
   const handleDrawerClose = () => {
     setOpen(false);
+    props.toggleSidebar();
   };
 
   const unHighlightedButton = (index, text) => {
