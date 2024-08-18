@@ -22,16 +22,9 @@ import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const drawerWidth = 240;
-
-const icons = {
-  0: <HomeOutlinedIcon />,
-  1: <LocalLibraryOutlinedIcon />,
-  2: <NotificationsNoneOutlinedIcon />,
-  3: <LogoutIcon onClick={logout}/>
-}
-
 
 async function logout() {
   const res = await fetch("/registration/logout/", {
@@ -113,6 +106,19 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 export default function SideDrawer(props) {
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate()
+
+  const icons = {
+    0: <HomeOutlinedIcon />,
+    1: <LocalLibraryOutlinedIcon />,
+    2: <NotificationsNoneOutlinedIcon />,
+    3: <LogoutIcon onClick={logout}/>
+  }
+
+  const links = {
+    "Home": "/home",
+    "Your Library": "/yourLibrary"
+  }
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -124,6 +130,7 @@ export default function SideDrawer(props) {
 
   const unHighlightedButton = (index, text) => {
     return (<ListItemButton
+        onClick={() => navigate(links[text])}
         sx={{
           minHeight: 48,
           justifyContent: open ? 'initial' : 'center',
@@ -167,7 +174,8 @@ export default function SideDrawer(props) {
     )}
     
     const highlightedButton = (index, text) => {
-      return (<ListItemButton
+      return (
+        <ListItemButton
         sx={{
           minHeight: 48,
           justifyContent: open ? 'initial' : 'center',

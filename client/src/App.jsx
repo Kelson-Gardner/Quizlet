@@ -3,11 +3,14 @@ import './App.css';
 
 function App(props) {
 
+  const pageContents = props.contents;
+
   return (
     <>
     <div className="side-drawer-container">
       <SideDrawer page={props.page}/>
     </div>
+    {pageContents}
     </>
   )
 }
