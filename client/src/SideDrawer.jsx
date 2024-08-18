@@ -18,6 +18,8 @@ import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNone
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import './SideDrawer.css';
 import TopBar from './TopBar';
+import Button from '@mui/material/Button';
+import AddIcon from '@mui/icons-material/Add';
 
 const drawerWidth = 240;
 
@@ -129,6 +131,21 @@ export default function SideDrawer() {
            Quizlet
           </Typography>
           <TopBar />
+          <Button
+      variant="contained"
+      width='10px'
+      sx={{
+        width: '36px',      // Set width
+        height: '36px',     // Set height equal to width for a square
+        minWidth: '36px',   // Prevent the button from shrinking
+        borderRadius: '7.5px', // Optional, customize the border-radius if you want rounded corners
+        marginLeft: '10rem',
+        backgroundColor: 'rgb(66, 85, 255)',
+        '&:hover': {
+          backgroundColor: 'rgb(66, 85, 255, .7)'
+        }
+      }}
+          ><AddIcon /></Button>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open} style={{backgroundColor: '#0a092d', marginTop: '100px'}}>
