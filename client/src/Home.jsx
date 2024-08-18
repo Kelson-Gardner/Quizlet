@@ -1,4 +1,4 @@
-import './Home.css';
+import './PageContents.css';
 
 function Home(props){
 

@@ -1,8 +1,10 @@
-function YourLibrary(){
+import './PageContents.css';
+
+function YourLibrary(props){
 
     return(
         <>
-            <div className="test">
+            <div className= {props.isOpen == true ? "is-open" : "not-open"}>
                 I am the YourLibrary page
             </div>
         </>
