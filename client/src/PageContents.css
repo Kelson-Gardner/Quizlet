@@ -1,7 +1,7 @@
 .is-open {
     display: flex;
     justify-content: baseline;
-    margin-left: 15%;
+    margin-left: 15rem;
     color: white;
     transition: 0.3s ease;
 }
@@ -9,7 +9,7 @@
 .not-open {
     display: flex;
     justify-content: baseline;
-    margin-left: 10%;
+    margin-left: 10rem;
     color: white;
     transition: 0.3s ease;
 }
