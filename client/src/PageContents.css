@@ -13,3 +13,13 @@
     color: white;
     transition: 0.3s ease;
 }
+
+.library-content-container{
+    margin-left: 10rem;
+    transition: 0.3s ease;
+}
+
+.library-content-container-shifted {
+    margin-left: 15rem;
+    transition: 0.3s ease;
+}
