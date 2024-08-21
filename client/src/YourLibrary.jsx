@@ -33,6 +33,10 @@ function YourLibrary(props){
                     <Tab label="Study Guides" value="3" />
                 </TabList>
                 </Box>
+                {/* TODO: implement the seperate pages as different components */}
+                {/* <TabPanel value="1"><FlashCards /></TabPanel>
+                <TabPanel value="2"><PracticeTests /></TabPanel>
+                <TabPanel value="3">StudyGuides /></TabPanel> */}
                 <TabPanel value="1">Flashcard Sets</TabPanel>
                 <TabPanel value="2">Practice Tests</TabPanel>
                 <TabPanel value="3">Study Guides</TabPanel>

@@ -19,7 +19,12 @@ const router = createHashRouter([
   {
     path: "/yourLibrary",
     element: <App page="your library" contents={<YourLibrary />}/>
-  }
+  },
+  // TODO: create the study guides page
+  // {
+  //   path: "studyGuides",
+  //   element: <App page="study guides" contents={<StudyGuides />}/>
+  // }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
