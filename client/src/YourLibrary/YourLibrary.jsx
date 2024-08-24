@@ -19,7 +19,7 @@ function YourLibrary(props){
             Your Library
         </h1>
         <div className={`library-content-container${props.isOpen ? "-shifted" : ""}`}>
-            <Box sx={{ width: '100%', typography: 'body1' }}>
+            <Box sx={{ width: '75%', typography: 'body1' }}>
             <TabContext value={value} >
                 <Box sx={{ borderBottom: 1, borderColor: 'rgb(100,100,100,.3)', borderWidth: '2px'}}>
                 <TabList onChange={handleChange} aria-label="your library pages" 

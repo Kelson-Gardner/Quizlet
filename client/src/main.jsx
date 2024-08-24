@@ -4,8 +4,8 @@ import App from './App.jsx';
 import './index.css';
 import 'vite/modulepreload-polyfill';
 import {createHashRouter, Navigate, RouterProvider} from 'react-router-dom';
-import Home from './Home.jsx';
-import YourLibrary from './YourLibrary.jsx';
+import Home from './Home/Home.jsx';
+import YourLibrary from './YourLibrary/YourLibrary.jsx';
 
 const router = createHashRouter([
   {
