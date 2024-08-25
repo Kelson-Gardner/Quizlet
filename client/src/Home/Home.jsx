@@ -15,7 +15,6 @@ function Home(props){
             display: 'flex',
             flexWrap: 'wrap',
             '& > :not(style)': {
-            m: 1,
             width: '20rem',
             height: '10rem',
             backgroundColor: 'rgb(175,230,230,.2)',

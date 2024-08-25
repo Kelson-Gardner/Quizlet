@@ -364,6 +364,9 @@ export default function SideDrawer(props) {
         }}/>
         </span>
           <List>
+          <span style={{display: 'flex', justifyContent: 'flex-start'}}> 
+        {open ? <div style={{color: 'white', marginLeft: '1.5rem'}}>Study with</div> : ""}
+        </span>
             {['Flashcards', 'Learn', 'Study Guides', 'Practice Tests', 'Log out'].map((text, index) => (
               <ListItem key={text} disablePadding sx={{ display: 'block', color: 'white'}}>
                 {text.toLowerCase() == props.page ? highlightedButton(index, test, "bottom") : unHighlightedButton(index, text, "bottom")}
