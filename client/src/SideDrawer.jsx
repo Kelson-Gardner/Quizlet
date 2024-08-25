@@ -24,9 +24,9 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Divider } from '@mui/material';
-import StyleIcon from '@mui/icons-material/Style';
-import SchoolIcon from '@mui/icons-material/School';
-import AssignmentIcon from '@mui/icons-material/Assignment';
+import StyleOutlinedIcon from '@mui/icons-material/StyleOutlined';
+import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
+import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined';
 import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 
 const drawerWidth = 240;
@@ -121,11 +121,19 @@ export default function SideDrawer(props) {
   }
 
   const bottomIcons = {
-    0: <StyleIcon />,
-    1: <SchoolIcon />,
-    2: <AssignmentIcon />,
+    0: <StyleOutlinedIcon />,
+    1: <SchoolOutlinedIcon />,
+    2: <AssignmentOutlinedIcon />,
     3: <PlaylistAddCheckIcon />,
     4: <LogoutIcon onClick={logout} />
+  }
+
+  const bottomIconColors = {
+    0: 'black',
+    1: 'red',
+    2: 'blue',
+    3: 'brown',
+    4: 'green'
   }
 
   const links = {
@@ -152,39 +160,75 @@ export default function SideDrawer(props) {
           px: 2.5,
         }}
         >
+          {top === "top" ? 
         <ListItemIcon
-          sx={{
-            minWidth: '40px',
-            width: '100%',
-            mr: open ? 3 : 'auto',
-            justifyContent: 'center',
-            alignItems: 'center',
-            padding: '7.5px',
-            borderRadius: '10px',
-            color: 'white',
-            '&:hover': {
-              color: '#7583ff',
-              backgroundColor: '#2e3856',
-              '& .list-item-text': {
-                color: '#7583ff',
-                backgroundColor: '#2e3856',
-              },
-            }
-          }}
-        >
-        {top === "top" ? topIcons[index] : bottomIcons[index]}
-        <ListItemText 
-        className="list-item-text"
-        primary={text}
-        sx={{ 
-          display: open ? 'auto' : 'none',
-          marginLeft: '10px',
+        sx={{
+          minWidth: '40px',
+          width: '100%',
+          mr: open ? 3 : 'auto',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: '7.5px',
+          borderRadius: '10px',
+          color: 'white',
           '&:hover': {
             color: '#7583ff',
-            backgroundColor: '#2e3856'
+            backgroundColor: '#2e3856',
+            '& .list-item-text': {
+              color: '#7583ff',
+              backgroundColor: '#2e3856',
+            },
           }
-          }} />
+        }}
+        >
+          {topIcons[index]}
+          <ListItemText 
+          className="list-item-text"
+          primary={text}
+          sx={{ 
+            display: open ? 'auto' : 'none',
+            marginLeft: '10px',
+            '&:hover': {
+              color: '#7583ff',
+              backgroundColor: '#2e3856'
+            }
+            }} /> 
         </ListItemIcon>
+        :
+        <ListItemIcon
+        sx={{
+          minWidth: '40px',
+          width: '100%',
+          mr: open ? 3 : 'auto',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: '7.5px',
+          borderRadius: '10px',
+          color: 'white',
+          '&:hover': {
+            color: bottomIconColors[index],
+            backgroundColor: '#2e3856',
+            '& .list-item-text': {
+              color: bottomIconColors[index],
+              backgroundColor: '#2e3856',
+            },
+          }
+        }}
+        >
+          {bottomIcons[index]}
+          <ListItemText 
+          className="list-item-text"
+          primary={text}
+          sx={{ 
+            display: open ? 'auto' : 'none',
+            marginLeft: '10px',
+            '&:hover': {
+              color: bottomIconColors[index],
+              backgroundColor: '#2e3856'
+            }
+            }} />
+        </ListItemIcon>
+          }
         </ListItemButton>
     )}
     
@@ -197,6 +241,7 @@ export default function SideDrawer(props) {
           px: 2.5,
         }}
         >
+        {top === "top" ?
         <ListItemIcon
           sx={{
             minWidth: '40px',
@@ -209,8 +254,8 @@ export default function SideDrawer(props) {
             color: '#7583ff',
             backgroundColor: '#2e3856 !important'
           }}
-        >
-          {top === "top" ? topIcons[index] : bottomIcons[index]}
+          >
+            {topIcons[index]}
         <ListItemText 
         className="list-item-text"
         primary={text}
@@ -219,8 +264,34 @@ export default function SideDrawer(props) {
           marginLeft: '10px',
           color: '#7583ff',
           backgroundColor: '#2e3856 !important'
+          }} /> 
+          </ListItemIcon>
+          :
+          <ListItemIcon
+          sx={{
+            minWidth: '40px',
+            width: '100%',
+            mr: open ? 3 : 'auto',
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: '7.5px',
+            borderRadius: '10px',
+            color: bottomIconColors[index],
+            backgroundColor: '#2e3856 !important'
+          }}
+        >
+          {bottomIcons[index]}
+        <ListItemText 
+        className="list-item-text"
+        primary={text}
+        sx={{ 
+          display: open ? 'auto' : 'none',
+          marginLeft: '10px',
+          color: bottomIconColors[index],
+          backgroundColor: '#2e3856 !important'
           }} />
         </ListItemIcon>
+          }
         </ListItemButton>
       )
     }
