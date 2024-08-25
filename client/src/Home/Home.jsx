@@ -1,4 +1,4 @@
-import './PageContents.css';
+import '../PageContents.css';
 import { Box, Paper } from '@mui/material';
 
 

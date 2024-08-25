@@ -23,6 +23,11 @@ import AddIcon from '@mui/icons-material/Add';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { Divider } from '@mui/material';
+import StyleIcon from '@mui/icons-material/Style';
+import SchoolIcon from '@mui/icons-material/School';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 
 const drawerWidth = 240;
 
@@ -108,11 +113,19 @@ export default function SideDrawer(props) {
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate()
 
-  const icons = {
+  const topIcons = {
     0: <HomeOutlinedIcon />,
     1: <LocalLibraryOutlinedIcon />,
     2: <NotificationsNoneOutlinedIcon />,
-    3: <LogoutIcon onClick={logout}/>
+    3: <LogoutIcon onClick={logout}/>,
+  }
+
+  const bottomIcons = {
+    0: <StyleIcon />,
+    1: <SchoolIcon />,
+    2: <AssignmentIcon />,
+    3: <PlaylistAddCheckIcon />,
+    4: <LogoutIcon onClick={logout} />
   }
 
   const links = {
@@ -130,7 +143,7 @@ export default function SideDrawer(props) {
     props.toggleSidebar();
   };
 
-  const unHighlightedButton = (index, text) => {
+  const unHighlightedButton = (index, text, top) => {
     return (<ListItemButton
         onClick={() => navigate(links[text])}
         sx={{
@@ -159,7 +172,7 @@ export default function SideDrawer(props) {
             }
           }}
         >
-          {icons[index]}
+        {top === "top" ? topIcons[index] : bottomIcons[index]}
         <ListItemText 
         className="list-item-text"
         primary={text}
@@ -175,7 +188,7 @@ export default function SideDrawer(props) {
         </ListItemButton>
     )}
     
-    const highlightedButton = (index, text) => {
+    const highlightedButton = (index, text, top) => {
       return (
         <ListItemButton
         sx={{
@@ -197,7 +210,7 @@ export default function SideDrawer(props) {
             backgroundColor: '#2e3856 !important'
           }}
         >
-          {icons[index]}
+          {top === "top" ? topIcons[index] : bottomIcons[index]}
         <ListItemText 
         className="list-item-text"
         primary={text}
@@ -268,10 +281,18 @@ export default function SideDrawer(props) {
        <List>
           {['Home', 'Your Library', 'Notifications', 'Log out'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block', color: 'white' }}>
-              {text.toLowerCase() == props.page ? highlightedButton(index, text) : unHighlightedButton(index, text)}
+              {text.toLowerCase() == props.page ? highlightedButton(index, text, "top") : unHighlightedButton(index, text, "top")}
             </ListItem>
           ))}
         </List>
+        <Divider />
+          <List>
+            {['Flashcards', 'Learn', 'Study Guides', 'Practice Tests', 'Log out'].map((text, index) => (
+              <ListItem key={text} disablePadding sx={{ display: 'block', color: 'white'}}>
+                {text.toLowerCase() == props.page ? highlightedButton(index, test, "bottom") : unHighlightedButton(index, text, "bottom")}
+              </ListItem>
+            ))}
+          </List>
       </Drawer>
     </Box>
   );
