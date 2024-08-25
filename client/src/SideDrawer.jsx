@@ -129,11 +129,11 @@ export default function SideDrawer(props) {
   }
 
   const bottomIconColors = {
-    0: 'black',
-    1: 'red',
-    2: 'blue',
-    3: 'brown',
-    4: 'green'
+    0: '#51cfff',
+    1: '#51cfff',
+    2: '#e372ff',
+    3: '#ff983a',
+    4: '#18ae79'
   }
 
   const links = {
