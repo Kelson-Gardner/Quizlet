@@ -28,6 +28,7 @@ import StyleOutlinedIcon from '@mui/icons-material/StyleOutlined';
 import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined';
 import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
+import MenuListComposition from './components/MenuListcomposition';
 
 const drawerWidth = 240;
 
@@ -328,21 +329,7 @@ export default function SideDrawer(props) {
             >Quizlet</Link>
           </Typography>
           <TopBar />
-          <Button
-      variant="contained"
-      width='10px'
-      sx={{
-        width: '36px',
-        height: '36px',
-        minWidth: '36px',
-        borderRadius: '7.5px',
-        marginLeft: '10rem',
-        backgroundColor: 'rgb(66, 85, 255)',
-        '&:hover': {
-          backgroundColor: 'rgb(66, 85, 255, .7)'
-        }
-      }}
-          ><AddIcon /></Button>
+          <MenuListComposition />
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open} style={{backgroundColor: '#0a092d', marginTop: '100px'}}>
