@@ -100,14 +100,38 @@ export default function MenuListComposition() {
                     onKeyDown={handleListKeyDown}
                     sx={{
                       borderRadius: '5px',
-                      border: '1px solid rgb(175,230,230,.2)'
+                      border: '1px solid rgb(175,230,230,.4)',
                     }}
                   >
-                    <MenuItem onClick={handleClose} sx={{color: 'white'}}><StyleOutlinedIcon sx={{marginRight: '1rem'}}/>Flashcard Set</MenuItem>
-                    <MenuItem onClick={handleClose} sx={{color: 'white'}}><AssignmentOutlinedIcon sx={{marginRight: '1rem'}}/>Study guide</MenuItem>
-                    <MenuItem onClick={handleClose} sx={{color: 'white'}}> <PlaylistAddCheckIcon sx={{marginRight: '1rem'}}/>Practice test</MenuItem>
-                    <MenuItem onClick={handleClose} sx={{color: 'white'}}><FolderOutlinedIcon sx={{marginRight: '1rem'}}/>Folder</MenuItem>
-                    <MenuItem onClick={handleClose} sx={{color: 'white'}}><PeopleAltOutlinedIcon sx={{marginRight: '1rem'}}/>Class</MenuItem>
+                    <MenuItem onClick={handleClose} 
+                    sx={{color: 'white',                       
+                      '&:hover' : {
+                        backgroundColor: 'rgb(100,100,100,.5)'
+                      }}}><StyleOutlinedIcon sx={{marginRight: '1rem'}}/>Flashcard Set</MenuItem>
+                    <MenuItem onClick={handleClose} 
+                    sx={{color: 'white',                       
+                      '&:hover' : {
+                        backgroundColor: 'rgb(100,100,100,.5)'
+                      }}}
+                    ><AssignmentOutlinedIcon sx={{marginRight: '1rem'}}/>Study guide</MenuItem>
+                    <MenuItem onClick={handleClose} 
+                    sx={{color: 'white',                       
+                      '&:hover' : {
+                        backgroundColor: 'rgb(100,100,100,.5)'
+                      }}}
+                    ><PlaylistAddCheckIcon sx={{marginRight: '1rem'}}/>Practice test</MenuItem>
+                    <MenuItem onClick={handleClose} 
+                    sx={{color: 'white',                       
+                      '&:hover' : {
+                        backgroundColor: 'rgb(100,100,100,.5)'
+                      }}}
+                    ><FolderOutlinedIcon sx={{marginRight: '1rem'}}/>Folder</MenuItem>
+                    <MenuItem onClick={handleClose} 
+                    sx={{color: 'white',                       
+                      '&:hover' : {
+                        backgroundColor: 'rgb(100,100,100,.5)'
+                      }}}
+                    ><PeopleAltOutlinedIcon sx={{marginRight: '1rem'}}/>Class</MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
