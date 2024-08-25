@@ -117,7 +117,6 @@ export default function SideDrawer(props) {
     0: <HomeOutlinedIcon />,
     1: <LocalLibraryOutlinedIcon />,
     2: <NotificationsNoneOutlinedIcon />,
-    3: <LogoutIcon onClick={logout}/>,
   }
 
   const bottomIcons = {
@@ -350,13 +349,20 @@ export default function SideDrawer(props) {
         <DrawerHeader style={{backgroundColor: '#0a092d'}}>
         </DrawerHeader>
        <List>
-          {['Home', 'Your Library', 'Notifications', 'Log out'].map((text, index) => (
+          {['Home', 'Your Library', 'Notifications'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block', color: 'white' }}>
               {text.toLowerCase() == props.page ? highlightedButton(index, text, "top") : unHighlightedButton(index, text, "top")}
             </ListItem>
           ))}
         </List>
-        <Divider />
+        <span style={{display: 'flex', justifyContent: 'center'}}>
+        <Divider 
+        sx={{
+          borderBottomWidth: '2px',
+          backgroundColor: 'rgb(100,100,100,.5)',
+          width: '75%',
+        }}/>
+        </span>
           <List>
             {['Flashcards', 'Learn', 'Study Guides', 'Practice Tests', 'Log out'].map((text, index) => (
               <ListItem key={text} disablePadding sx={{ display: 'block', color: 'white'}}>
