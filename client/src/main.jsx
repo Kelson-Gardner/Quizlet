@@ -25,6 +25,11 @@ const router = createHashRouter([
   //   path: "studyGuides",
   //   element: <App page="study guides" contents={<StudyGuides />}/>
   // }
+  // TODO: create the practice tests page
+  // {
+  //   path: "practiceTests",
+  //   element: <App page="practice tests" contents={<PracticeTests />}/>
+  // }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
