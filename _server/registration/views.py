@@ -41,7 +41,6 @@ def sign_in(req):
             return redirect("/")
         else:
             return render(req, "registration/sign_in.html", {"login_error": "ERROR: INVALID SIGN IN CREDENTIALS"})
-        # return render(req, "registration/sign_in.html")
     else:
         return render(req, "registration/sign_in.html")
 
