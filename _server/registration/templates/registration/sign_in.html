@@ -16,8 +16,8 @@
     <label>
       <input type="password" name="password" placeholder="Password">
     </label>
-    {% if email_error or password_error %}
-    <div style="color: red; font-size: 12px;">Your email or password is incorrect</div>
+    {% if login_error %}
+    <div style="color: red; font-size: 12px;">Email or password is incorrect</div>
     {% endif %}
   </div>
   <button>Sign In</button>
