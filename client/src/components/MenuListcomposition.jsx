@@ -8,14 +8,15 @@ import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
-import StyleOutlinedIcon from '@mui/icons-material/StyleOutlined';
 import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined';
 import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
+import SpringModal from './SpringModal';
 
 export default function MenuListComposition() {
   const [open, setOpen] = React.useState(false);
+  const [modalSpringOpen, setModalSpringOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
   const handleToggle = () => {
@@ -26,7 +27,6 @@ export default function MenuListComposition() {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
-
     setOpen(false);
   };
 
@@ -37,6 +37,10 @@ export default function MenuListComposition() {
     } else if (event.key === 'Escape') {
       setOpen(false);
     }
+  }
+
+  function openCreateFlashCardPopUp(){
+    setModalSpringOpen(true);
   }
 
   // return focus to the button when we transitioned from !open -> open
@@ -103,11 +107,8 @@ export default function MenuListComposition() {
                       border: '1px solid rgb(175,230,230,.4)',
                     }}
                   >
-                    <MenuItem onClick={handleClose} 
-                    sx={{color: 'white',                       
-                      '&:hover' : {
-                        backgroundColor: 'rgb(100,100,100,.5)'
-                      }}}><StyleOutlinedIcon sx={{marginRight: '1rem'}}/>Flashcard Set</MenuItem>
+                    {/* {modalSpringOpen ? <SpringModal /> : <></>} */}
+                    <SpringModal />
                     <MenuItem onClick={handleClose} 
                     sx={{color: 'white',                       
                       '&:hover' : {
